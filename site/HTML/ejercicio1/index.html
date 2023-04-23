@@ -24,7 +24,7 @@
   <div class="pages" style="display: flex; flex-direction: row;">
       <li><a href="./segundaPag.html">Pagina en misma pestaña</a></li>
       <li><a href="./terceraPag.html" target="_blank">Pagina en pestaña nueva</a></li>
-      <li><a href="#footer">Anclaje a footer</a></li>
+      <li><a href="#preguntas">Anclaje a PREGUNTAS</a></li>
   </div>
   <hr/>
 
@@ -54,55 +54,84 @@
   </div>
 </div>
 
-  <div class="tablas">
-    <h2>Tabla 1 (Empty)</h2>
-    <table border="1">
-      <tr>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-      </tr>
-      <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-      </tr>
-    </table>
-  
-    <h2>Tabla 2</h2>
-    <table border="1">
-      <tr>
-        <th>Columna A</th>
-        <th>Columna B</th>
-        <th>Columna C</th>
-        <th>Columna D</th>
-      </tr>
-      <tr>
-        <td>1</td>
-        <td>2</td>
-        <td>3</td>
-        <td>4</td>
-      </tr>
-      <tr>
-        <td>1</td>
-        <td>2</td>
-        <td>3</td>
-        <td>4</td>
-      </tr>
-    </table>
-  </div>
+<div id="preguntas">
+  <h1>PREGUNTAS:</h1>
+<h4>1 - Ejemplo de uso de etiquetas Meta</h4>
+<p>Las etiquetas Meta se utilizan para metadatos, que son datos relacionados al documento pero que no son visualizados en la presentación del mismo.
+En estas etiquetas yo puedo especificar el tipo de decodificación de datos, puedo pasar links/tags de css para sumar estilos a mi pagina, establecer el SEO de mi pagina para un mejor posicionamiento en busqueda, etc</p>
+</br>
+
+<h4>2- Atributos aplicables a la etiqueta HTML</h4>
+<p>
+title: Brinda información adicional al usuario cuando deja mantenido el cursor sobre la página</br>
+lang: Define el idioma principal del documento</br>
+entre otros atributos, para mas información se puede visitar la <a href="https://www.w3schools.com/html/html_attributes.asp">W3School HTML Attributes</a>
+</p>
+
+</br>
+<h4>3- ¿Cómo se relaciona un header HTTP con la etiqueta Head de HTML?</h4>
+<p>No se pueden enviar headers HTTP desde un HTML, debido a esto, hay un atributo que me permite a mi establecer en una etiqueta meta, el tipo de headers que se van a recibir en una request.
+Http-equiv (equiv = equivalente) atributo que premite hacer referencia a un header HTTP.</p>
+</br>
+
+<h4>4- ¿Qué es UTF8?</h4>
+<p>
+    UTF-8 es un formato de codificación de caracteres que representa cualquier caracter Unicode.
+    Este formato de codificación permite el uso de tildes y la letra ñ de manera adecuada.
+</p>
+
+</br>
+<h4>5- ¿Qué atributo HTML sirve para aplicar estilo y a qué etiqueta es aplicable?</h4>
+<p>
+    El atributo <b>style</b> sirve para aplicar estilo al documento  y es aplicable a todas las etiquetas
+    que contengan elementos visibles. 
+</p>
+
+<h4>6- ¿Dónde se indica que un enlace debe ubicar el documento en una nueva pestaña?</h4>
+<p>
+    atributo="valor" -> target="_blank" en la etiqueta de anclaje o "a" se indica que el enlace deberá ser abierto en una pestaña nueva.
+</p>
+
+<h4>7- Explicar cuándo se usarían etiquetas semánticas y con qué propósito</h4>
+<p>
+    Las etiquetas semánticas se utilizan para la optimización del sitio para los motores de búsqueda. 
+    Sirven para enmarcar o estructurar semánticamente el contenido del html dentro del body.
+    La utilización de las etiquetas semánticas generalmente responde a formas estandarizadas de presentar el contenido de una página, 
+    como por ejemplo la etiqueta footer suele contener información como direcciones, números de documento, contacto, 
+    la etiqueta main indica dónde está la información más relevante del documento, etc. El contenido que haya dentro de cada etiqueta semántica
+    permite que una página tenga una posición más relevante a la hora de filtrar contenido específico en un buscador. 
+</p>
+
+<h4>8- ¿Qué atributos de estilo básicos aplicarían a una tabla? Explicar</h4>
+
+<p>Los atributos de estilo básicos aplicables a una tabla son:</p>
+    <ol>
+        <li>border: Borde de una tabla (sólidos, punteados, de guiones, etc.)</li>
+        <li>border-collapse: Los bordes de las celdas se combinan en uno solo</li>
+        <li>width: Indica el ancho de la tabla</li>
+        <li>height: Indica el alto de la tabla</li>
+        <li>background-color: Indica el color de fondo de la tabla</li>
+    </ol>
 
 
+<h4>9- ¿Qué diferencia existe entre la etiqueta body de un documento HTML y el body del protocolo HTTP?</h4>
+<p>
+    La etiqueta BODY de un documento HTML, contendra a todos los elementos visibles para el usuario en un doc html.
+    
+    La etiqueta BODY en una HTTPRequest contendra parte de la información que se esta enviando al servidor que recibe esa request.
+</p>
+
+<h4>10- ¿Qué atributos marcan la agrupación de celdas de una tabla? ¿A qué etiquetas se aplican?</h4>
+<p>
+    El atributo <b>"colspan"</b> me permite indicar cuántas celdas se van a querer agrupar horizontalmente, y el atributo
+    <b>rowspan</b> indica cuántas celdas se van a agrupar verticalmente. Ambas se aplican a las etiquetas <b>td</b>.
+</p>
+
+
+</div>
 
   <footer id="footer">Footer
-    <div class="datos">
-      <h2>Datos Del Alumno</h2>
-      <span>Emiliano Vaccaro Costa. 15-27760.</span>
-    </div>
-
-
+      <a href="../index.html">VOLVER</a>
   </footer>
   
 </body>
