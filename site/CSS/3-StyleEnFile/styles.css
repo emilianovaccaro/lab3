@@ -1,0 +1,19 @@
+body{
+  font-size: 25px;
+}
+
+h1 {
+  width: 100%;
+  text-align:center;
+  margin:auto;
+  display: block;
+  background-color: lightblue;
+}
+
+p {
+  text-align:left;
+  color: blue;
+  font-style: italic;
+  border-bottom: 1px solid blue;
+  border-top: 1px solid blue;
+}
