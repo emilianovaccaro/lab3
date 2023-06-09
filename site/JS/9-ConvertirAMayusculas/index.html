@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles.css">
+    <title>Convertir a Mayúsculas</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+      }
+    
+      label {
+        display: block;
+        margin-bottom: 5px;
+      }
+    
+      input {
+        padding: 5px;
+        font-size: 16px;
+        margin-bottom: 10px;
+      }
+    </style>
+    </head>
+    <body>
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre">
+    
+    <label for="apellido">Apellido:</label>
+    <input type="text" id="apellido">
+    
+    <script>
+      // Obtener los elementos de entrada
+      var inputNombre = document.getElementById('nombre');
+      var inputApellido = document.getElementById('apellido');
+      
+      // Agregar eventos de pérdida de enfoque a los campos de entrada
+      inputNombre.addEventListener('blur', convertirAMayusculas);
+      inputApellido.addEventListener('blur', convertirAMayusculas);
+      
+      // Función para convertir el texto a mayúsculas
+      function convertirAMayusculas(event) {
+        var input = event.target;
+        input.value = input.value.toUpperCase();
+      }
+    </script>
+  <a href="../index.html">Volver</a>
+  </body>
+</html>

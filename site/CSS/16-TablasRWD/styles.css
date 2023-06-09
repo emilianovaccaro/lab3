@@ -1,0 +1,27 @@
+
+.table-container {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+thead {
+    background-color: orange;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+@media screen and (max-width: 600px) {
+  th:nth-child(n+4),
+  td:nth-child(n+4) {
+    display: none;
+  }
+}

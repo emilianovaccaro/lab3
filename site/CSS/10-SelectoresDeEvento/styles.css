@@ -1,0 +1,66 @@
+      
+      html,body
+      {
+          height: 100%;
+          width: 100%;
+          box-sizing: border-box;
+
+      }
+      .contenedor
+    {
+          background-color:lightcoral;
+          width: 85%;
+          height: 100%;
+          margin: auto;
+          display: block;
+    }
+
+    label {
+        font-weight: bold;
+    }
+
+      .btopcion
+      {
+        text-align: center;
+        padding: 10px;
+        box-sizing: border-box;
+        height: 50px;
+        width: 100px;
+        background-color: green;
+        color:grey;
+        float: left;
+      }
+      .btopcion:hover
+      {
+          background-color: grey ;
+          color: white;
+          cursor:pointer;
+      }
+      .btopcion:active
+      {
+          background-color: yellow;
+      }
+      .fotos
+      {
+          width: 200px;
+          height: 200px;
+          border: 1px solid black;
+          float:left;
+      }
+      .fotos:active
+      {
+          width: 50%;
+          height: auto;
+          transition: 0.5s;
+      }
+
+      input:focus
+      { 
+          background-color: orangered;
+      }
+
+      .imagen
+      {
+          max-width: 100%;
+          max-height: 100%;
+      }

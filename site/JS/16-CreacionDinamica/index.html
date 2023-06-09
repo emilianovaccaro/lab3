@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles.css">
+    <title>Creación Dinámica de Elementos</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 100vh;
+        background-color: #f9f9f9;
+      }
+  
+      .container {
+        display: flex;
+        width: 90%;
+        border: 3px solid black;
+        justify-content: center;
+        align-items: center;
+        flex-grow: 1;
+      }
+  
+      #elementos {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+  
+      .elemento {
+        width: 100px;
+        height: 100px;
+        background-color: #ccc;
+        border-radius: 5px;
+      }
+  
+      .botones {
+        margin-left: 20px;
+        display: flex;
+        gap: 10px;
+      }
+  
+      button {
+        padding: 10px 20px;
+        font-size: 16px;
+        border-radius: 5px;
+        border: none;
+        background-color: #007bff;
+        color: #fff;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div id="elementos"></div>
+    </div>
+  
+    <div class="botones">
+      <button onclick="crearElemento()">Crear Elemento</button>
+      <button onclick="eliminarElemento()">Eliminar Elemento</button>
+      <button onclick="limpiarTodo()">Limpiar Contenedor</button>
+    </div>
+  
+    <script>
+      var contenedor = document.getElementById("elementos");
+      var contador = 0;
+  
+      function crearElemento() {
+        var elemento = document.createElement("div");
+        elemento.classList.add("elemento");
+        elemento.innerText = contador;
+        contenedor.appendChild(elemento);
+        contador++;
+      }
+  
+      function eliminarElemento() {
+        var elementos = contenedor.getElementsByClassName("elemento");
+        if (elementos.length > 0) {
+          contenedor.removeChild(elementos[elementos.length - 1]);
+          contador--;
+        }
+      }
+
+      function limpiarTodo() {
+        var elementos = contenedor.getElementsByClassName("elemento");
+        while (elementos.length > 0) {
+          contenedor.removeChild(elementos[elementos.length - 1]);
+        }
+        contador = 0;
+      }
+    </script>
+  <a href="../index.html">Volver</a>
+  </body>
+</html>

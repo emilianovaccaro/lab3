@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles.css">
+    <title>Formulario con Validación</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+      }
+  
+      label {
+        display: block;
+        margin-bottom: 5px;
+      }
+  
+      input[type="number"] {
+        width: 60px;
+        padding: 5px;
+        margin-bottom: 10px;
+      }
+  
+      button {
+        padding: 8px 12px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        cursor: pointer;
+      }
+  
+      button:hover {
+        background-color: #45a049;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Formulario con Validación</h1>
+  
+    <form id="myForm">
+      <label for="dia">Día:</label>
+      <input type="number" id="dia" name="dia" min="1" max="31" onkeyup="validarDia()">
+  
+      <label for="mes">Mes:</label>
+      <input type="number" id="mes" name="mes" min="1" max="12" onkeyup="validarMes()">
+  
+      <button type="button" onclick="limpiarCampos()">Limpiar</button>
+      <button type="submit" onclick="confirmarEnvio()">Enviar</button>
+    </form>
+  
+
+
+    <script>
+      function limpiarCampos() {
+        document.getElementById("myForm").reset();
+      }
+  
+      function validarDia() {
+        var diaInput = document.getElementById("dia");
+        var dia = parseInt(diaInput.value);
+  
+        if (isNaN(dia) || dia < 1 || dia > 31) {
+          alert("el día debe estar entre 1 y 31");
+        }
+      }
+  
+      function validarMes() {
+        var mesInput = document.getElementById("mes");
+        var mes = parseInt(mesInput.value);
+  
+        if (isNaN(mes) || mes < 1 || mes > 12) {
+          alert("el més debe estar entre 1 y 12");
+        }
+      }
+  
+      function confirmarEnvio() {
+        var diaInput = document.getElementById("dia");
+        var dia = parseInt(diaInput.value);
+        var mesInput = document.getElementById("mes");
+        var mes = parseInt(mesInput.value);
+  
+        var confirmacion = confirm("¿Estás seguro de enviar estos datos?\nDía: " + dia + "\nMes: " + mes);
+  
+        if (confirmacion && !isNaN(dia) && !isNaN(mes) && dia >= 1 && dia <= 31 && mes >= 1 && mes <= 12) {
+          var url = "?dia=" + encodeURIComponent(dia) + "&mes=" + encodeURIComponent(mes);
+          window.location.href = url;     
+          limpiarCampos();
+        }
+      }
+    </script>
+  <a href="../index.html">Volver</a>
+  </body>
+</html>

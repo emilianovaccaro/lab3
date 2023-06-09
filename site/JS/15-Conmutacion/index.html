@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles.css">
+    <title>Cambiar Clase y Formato</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+
+        height: 100vh;
+      }
+  
+      ul {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        list-style: none;
+        padding: 0;
+      }
+  
+      li {
+        margin-bottom: 10px;
+      }
+  
+      .default {
+        background-color: #f2f2f2;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+  
+      .button1 {
+        background-color: #ff9999;
+        color: white;
+        font-weight: bold;
+      }
+  
+      .button2 {
+        background-color: #99ff99;
+        color: white;
+        font-style: italic;
+      }
+  
+      .button3 {
+        background-color: #9999ff;
+        color: white;
+        text-decoration: underline;
+      }
+  
+      .button4 {
+        background-color: #ffff99;
+        color: #333;
+        font-weight: bold;
+        font-size: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <ul id="myList">
+      <li class="default">Item 1</li>
+      <li class="default">Item 2</li>
+      <li class="default">Item 3</li>
+    </ul>
+  
+    <button onclick="cambiarClase('button1')">Botón 1</button>
+    <button onclick="cambiarClase('button2')">Botón 2</button>
+    <button onclick="cambiarClase('button3')">Botón 3</button>
+    <button onclick="cambiarClase('button4')">Botón 4</button>
+  
+    <script>
+      function cambiarClase(clase) {
+        var listItems = document.querySelectorAll("#myList li");
+        for (var i = 0; i < listItems.length; i++) {
+          listItems[i].className = "default";
+          listItems[i].classList.add(clase);
+        }
+      }
+    </script>
+  <a href="../index.html">Volver</a>
+  </body>
+</html>

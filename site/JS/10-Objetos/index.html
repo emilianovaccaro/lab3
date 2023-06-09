@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles.css">
+    <title>Trabajando con Objetos</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+      }
+    
+      label {
+        display: block;
+        margin-bottom: 5px;
+      }
+      input {
+        padding: 5px;
+        font-size: 16px;
+        margin-bottom: 10px;
+      }
+
+      #resultado {
+        margin-top: 20px;
+      }
+
+      table {
+        border-collapse: collapse;
+        width: 100%;
+      }
+      th, td {
+        border: 1px solid black;
+        padding: 8px;
+        text-align: left;
+      }
+      
+      #ocultar {
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre">
+    <label for="apellido">Apellido:</label>
+    <input type="text" id="apellido">
+    <label for="fechaNac">Fecha de Nacimiento:</label>
+    <input type="date" id="fechaNac">
+    
+    <button onclick="agregarPersona()">Agregar Persona</button>
+    <button onclick="mostrarPersonas()">Mostrar Personas</button>
+    
+    <div id="resultado"></div>
+    
+    <button id="ocultar" onclick="ocultarResultado()">Ocultar Resultado</button>
+    
+    <script>
+      let personas = [];
+      
+      function agregarPersona() {
+        let nombre = document.getElementById('nombre').value;
+        let fechaNac = document.getElementById('fechaNac').value;
+        let apellido = document.getElementById('apellido').value;
+        
+        let persona = {
+          nombre: nombre,
+          apellido: apellido,
+          fechaNac: fechaNac
+        };
+        
+        personas.push(persona);
+        document.getElementById('nombre').value = '';
+        document.getElementById('fechaNac').value = '';
+        document.getElementById('apellido').value = '';
+      }
+      
+
+      function mostrarPersonas() {
+        let resultado = document.getElementById('resultado');
+        
+        let tabla = document.createElement('table');
+        
+        let encabezado = tabla.createTHead();
+        let encabezadoFila = encabezado.insertRow();
+        let encabezadoNombre = encabezadoFila.insertCell();
+        encabezadoNombre.innerHTML = '<b>Nombre</b>';
+        let encabezadoApellido = encabezadoFila.insertCell();
+        encabezadoApellido.innerHTML = '<b>Apellido</b>';
+        let encabezadoFechaNac = encabezadoFila.insertCell();
+        encabezadoFechaNac.innerHTML = '<b>Fecha de Nacimiento</b>';
+        
+        let cuerpo = tabla.createTBody();
+        
+        for (let i = 0; i < personas.length; i++) {
+          let persona = personas[i];
+          let fila = cuerpo.insertRow();
+          let celdaNombre = fila.insertCell();
+          celdaNombre.textContent = persona.nombre;
+          let celdaApellido = fila.insertCell();
+          celdaApellido.textContent = persona.apellido;
+          let celdaFechaNac = fila.insertCell();
+          celdaFechaNac.textContent = persona.fechaNac;
+        }
+        
+        resultado.innerHTML = '';
+        resultado.appendChild(tabla);
+        resultado.style.display = 'block';
+      }
+      
+      function ocultarResultado() {
+        document.getElementById('resultado').style.display = 'none';
+      }
+    </script>
+  <a href="../index.html">Volver</a>
+  </body>
+</html>

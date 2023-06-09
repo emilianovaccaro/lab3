@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scope</title>
+    <style>
+        button
+        {
+            width: 30%;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        var MyVar;
+    </script>
+    <button onclick="var MyVar = prompt('Ingrese una variable para su inicializacion inMyVar'); alert('El valor de la variable ingresada es : '+ MyVar+' ') ; alert ('El tipo de la variable local ingresada es: '+typeof MyVar+'') " > 
+        Inicialización incorrecta 
+    </button>
+    <button onclick= "MyVar = prompt('Ingrese una variable para su inicializacion MyVar'); alert('El valor de la variable ingresada es : '+ MyVar+' ') ; alert ('El tipo de la variable local ingresada es: '+typeof MyVar+'')  "> 
+        Inicializacion correcta
+    </button>
+    <button onclick="
+        if (MyVar == null){
+            alert('La variable global no ha sido asignada')
+        }
+        else{
+            alert('La variable global tiene valor: '+ MyVar+'')
+        }
+    "> 
+        Muestra variable global
+    </button>
+<a href="../index.html">Volver</a>
+</body>
+</html>

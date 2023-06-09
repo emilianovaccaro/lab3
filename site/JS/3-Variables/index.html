@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Variables</title>
+</head>
+<body>
+    <script>
+        var A = 5
+        var B = " Hola"
+        var C = 12031
+        var D = "Variable D"
+        
+        var Global = prompt("Ingrese un valor para cargar en una variable global" );
+        document.write ("<h2>Carga de variables globales</h2>")
+        document.write("<p>Variable <span style='color:red'> Global </span> inicializada desde programa:"+ Global +" </p>")
+        document.write("<p>Tipo de  <span style='color:blue'> Global </span> : "+ typeof Global + "  </p>")
+        document.write("Variable <span style='color:green'> A </span> incializa desde programa : 1 ")
+        document.write("<p>Tipo de  <span style='color:green'> A </span> : "+ typeof A + "  </p>")
+        document.write("Variable <span style='color:blue'> B </span> incializa desde programa : 1 ")
+        document.write("<p>Tipo de  <span style='color:blue'> B </span> : "+ typeof B + "  </p>")
+        document.write("Variable <span style='color:pink'> C </span> incializa desde programa : 2 ")
+        document.write("<p>Tipo de  <span style='color:pink'> C </span> : "+ typeof C + "  </p>")
+        document.write("<p> <span style='color:green'> A </span> + <span style='color:blue'> B </span> : "+A+B+" <p>" )
+        document.write("<p>Tipo de <span style='color:green'> A </span> + <span style='color:blue'> B </span> : "+ typeof (A + B) + "  </p>")
+        document.write("<p> <span style='color:green'> A </span> + <span style='color:pink'> C </span> : "+(A+C)+" <p>" )
+        document.write("<p>Tipo de <span style='color:green'> A </span> + <span style='color:blue'> B </span> : "+ typeof (A + C) + "  </p>")
+        document.write("La variable <span style='color:orange'> D </span> cargada desde el script: "+D+" ")
+        document.write("<p>Tipo de  <span style='color:green'> A </span> : "+ typeof D + "  </p>")  
+    </script>
+<a href="../index.html">Volver</a>
+</body>
+</html>
