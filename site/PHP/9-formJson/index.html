@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario a json</title>
+    <style>
+        body, html
+        {
+            height: 100%;
+            width: 100%;
+            margin: 0;
+        }
+        #contenedor
+        {
+            height: 100%;
+            width: 100%;
+            position: relative;
+        }
+
+        #header, #footer
+        {
+            height: 10%;
+            width: 100%;
+            background-color: grey;
+        }
+
+        #main
+        {
+            height: 80%;
+            width: 100%;
+            background-color: lightgrey;
+        }
+
+        #botonModal
+        {
+            width: 150px;
+            height: 40px;
+            background-color: black;
+            color: white;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        #contenedorForm
+        {
+            min-height: 325px;
+            width: 700px;
+            background-color: darkgrey;
+            position: fixed;
+            top: 10%;
+            left: 20%;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 6px 8px 10px 2px gray;
+            display:none;
+        }
+
+        #headerForm
+        {
+            width: 100%;
+            height: 10%;
+            background-color: darkgrey;
+            border-radius: 10px;
+            display: flex;
+            justify-content: flex-end;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        #formulario
+        {
+            width: 100%;
+            height: 90%;
+            background-color: lightseagreen;
+            color: black;
+            border-radius: 10px;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        input
+        {
+            padding: 5px;
+            margin-bottom: 10px;
+            border: 3px solid black;
+        }
+
+        #botonForm
+        {
+            color: red;
+            background-color: white;
+            width: 20px;
+            font-weight: bold;
+            text-align: center;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #botonForm:hover
+        {
+            opacity: 0.5;
+        }
+
+        #enviar
+        {
+            width: 70px;
+            padding: 5px;
+        }
+
+        #footer {
+            text-align: center;
+            color: white;
+        }
+
+        .modalActivado
+        {
+            opacity: 0.3;
+            pointer-events: none;
+        }
+
+        .modalDesactivado
+        {
+            opacity: 1;
+            pointer-events: auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="contenedor">
+        <div id="header"></div>
+        <div id="main">
+            <div id="botonModal">
+                Ventana Modal
+            </div>
+        </div>
+        <div id="footer">
+
+            <div><a href="../index.html">Volver</a></div>
+
+        </div>
+    </div>
+    <div id="contenedorForm">
+        <div id="headerForm">
+            <div id="botonForm">X</div>
+        </div>
+        <div id="formulario">
+            <label for="nombre">Nombre:</label><br>
+            <input id="nombre" name="nombre" type="text" required autocomplete="off"><br>
+            <label for="apellido">Apellido:</label><br>
+            <input id="apellido" name="apellido" type="text" required autocomplete="off"><br>
+            <label for="edad">Edad:</label><br>
+            <input id="edad" name="edad" type="number" required><br>
+            <label for="nombre">Sexo:</label><br>
+            <input type="radio" name="sexo" value="Masculino" checked="checked" class="radio">Masculino
+            <input type="radio" name="sexo" value="Femenino" class="radio">Femenino<br>
+            <button id="enviar">Enviar</button>
+            <div id="respuesta"></div>
+        </div>
+    </div>
+</body>
+</html>
+
+<script src="../jquery.js"></script>
+<script>
+
+    $("#botonForm").click(function(){
+        document.getElementById("contenedor").className = "modalDesactivado";
+        $("#contenedorForm").hide();
+    });
+
+    $("#botonModal").click(function(){
+        document.getElementById("contenedor").className = "modalActivado";
+        $("#contenedorForm").show();
+    });
+
+    $("#enviar").click(function(){
+
+        var confirmacion = confirm("Presione 'ACEPTAR' para enviar el formulario");
+        if(confirmacion)
+        {
+            $("#respuesta").empty();
+            $("#respuesta").html("<h4><i>Cargando...</i><h4>");
+
+            $.ajax({
+                type:"post",
+                url: "./respuesta.php",
+                data: {
+                       nombre: $("#nombre").val(), 
+                       apellido: $("#apellido").val(), 
+                       edad: $("#edad").val(), 
+                       sexo: $(".radio").val()
+                    },
+                success: function(respuestaDelServer, estado)
+                {
+                    $("#respuesta").empty();
+                    $("#respuesta").html("<h4>Respuesta del Servidor</h4>" + respuestaDelServer);
+                }
+            });
+        }
+    })
+
+</script>
