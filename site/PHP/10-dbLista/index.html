@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabla Formulario</title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+    <div id="contenedor">
+        <header>
+            <div id="botones">
+                
+                <input type="text" id="orden" value="ID" hidden />
+                <button id="load">Load</button>
+                <button id="clear">Clear</button>
+                <a href="../index.html"><button id="volver">Back to exercises</button></a>
+            </div>
+        </header>
+        <table>
+            <thead>
+                <tr>
+                    <th campo-dato="id" class="th" id="thId">ID</th>
+                    <th campo-dato="marca" class="th" id="thMarca">Brand</th>
+                    <th campo-dato="modelo" class="th" id="thModelo">Model</th>
+                    <th campo-dato="precio" class="th" id="thPrecio">Price</th>
+                    <th campo-dato="año" class="th" id="thAño">Date</th>
+                </tr>
+                <tr>
+                    <td campo-dato="id" class="th"  ><input id="FId" type="text"></td>
+                    <td campo-dato="marca" class="th"  >
+                        <select id="FMarca">
+                            <option value="">Todas</option>
+                        </select>
+                    </td>
+                    <td campo-dato="modelo" class="th" ><input  id="FModelo" type="text"></td>
+                    <td campo-dato="precio" class="th" ><input id="FPrecio" type="text"></td>
+                    <td campo-dato="año" class="th" ><input id="FFecha" type="text"></td>
+                </tr>
+
+            </thead>
+            <tbody id="tabla">
+    
+            </tbody>
+        </table>
+        <footer id="footer">
+            Footer
+        </footer>
+
+        
+    </div>
+
+</body>
+</html>
+
+<script src="../jquery.js"></script>
+
+<script>
+
+    function cargarDesplegable()
+    {
+        var desplegable = $("#FMarca");
+
+        $.ajax({
+            type: "get",
+            url:"./brands.php",
+            success: function(respuestaServer)
+            {
+                alert(respuestaServer);
+                var objRespuesta = JSON.parse(respuestaServer);
+                objRespuesta.marcas.forEach(marca => {
+                    //Hay que hacerlo en options diferentes, sino no funciona
+                    var opcion = document.createElement("option");
+                    opcion.innerHTML = marca.nombreMarca;
+                    desplegable.append(opcion);
+                });
+            }
+            });
+    }
+
+    $(document).ready(function(){
+        
+        cargarDesplegable();
+
+        $("#thId, #thMarca, #thModelo, #thPrecio").click(function() {
+            $("#orden").val($(this).attr("campo-dato"));
+            $("#load").trigger("click");
+          });
+
+        $("#thAño").click(function(){
+            $("#orden").val("Fecha");
+            $("#load").trigger("click");
+        });
+
+        $("#load").click(function(){
+            console.log("cargando...");
+            $("#tabla").empty();
+            $("#tabla").html("<h3><i>Cargando datos...</i></h3>");
+
+            $.ajax({
+                type: "get",
+                url:"./dataBase.php",
+                data: { 
+                        orden: $("#orden").val(), 
+                        id: $("#FId").val(),
+                        marca: $("#FMarca").val(),
+                        modelo: $("#FModelo").val(),
+                        precio: $("#FPrecio").val(),
+                        fecha: $("#FFecha").val()
+                    },
+                success: function(respuestaServer){
+                    alert(respuestaServer);
+                    $("#tabla").empty();
+                    var objJson = JSON.parse(respuestaServer);
+                    objJson.automoviles.forEach(function(valor, indice)
+                    {
+                        
+                        var objTr = document.createElement("tr");
+                        var tdId = document.createElement("td");
+
+                        var tdMarca = document.createElement("td");
+                        var tdModelo = document.createElement("td");
+                        var tdPrecio = document.createElement("td");
+                        var tdAño = document.createElement("td");
+                        tdId.innerHTML = valor.id;
+                        objTr.appendChild(tdId);
+                        tdMarca.innerHTML = valor.marca;
+                        objTr.appendChild(tdMarca);
+                        tdModelo.innerHTML = valor.modelo;
+                        objTr.appendChild(tdModelo);
+                        tdPrecio.innerHTML = valor.precio;
+                        objTr.appendChild(tdPrecio);
+                        tdAño.innerHTML = valor.año;
+                        objTr.appendChild(tdAño);
+                        $("#tabla").append(objTr);
+                    });
+
+                    $("#footer").html("Cantidad de registros: " + objJson.largo);
+
+                }
+            })
+
+        });
+
+        $("#clear").click(function(){
+            $("#tabla").empty();
+            flag = 0;
+        })
+
+    });
+</script>
