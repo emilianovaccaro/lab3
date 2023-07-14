@@ -1,5 +1,5 @@
 <?php 
-    include("../verificarUsuario.php");
+    include("./verificarUsuario.php");
 ?>
 
 <!DOCTYPE html>

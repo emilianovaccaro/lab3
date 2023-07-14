@@ -1,5 +1,5 @@
 <?php
-    include("../verificarUsuario.php");
+    include("./verificarUsuario.php");
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $dbname = "id20645219_basedepruebas1";
     $host = "localhost";

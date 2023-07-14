@@ -1,5 +1,5 @@
 <?php
-    include("../verificarUsuario.php");
+    include("./verificarUsuario.php");
     
     $dbname = "id20645219_basedepruebas1";
     $host= "localhost";
