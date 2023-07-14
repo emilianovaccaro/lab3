@@ -1,23 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio de sesión</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <h1>Iniciar sesión</h1>
-      <form action="./login.php" method="POST">
-          <label for="nombre_usuario">Nombre de usuario:</label>
-          <input type="text" id="nombre_usuario" name="nombre_usuario" required><br><br>
-          
-          <label for="contrasenia">Contraseña:</label>
-          <input type="password" id="contrasenia" name="contrasenia" required><br><br>
-          
-          <input type="submit" value="Iniciar sesión">
-          <a href="./registro.html"><button type="button">Registrar</button></a>
-      </form>
-      <a href="./index.php">Volver</a>
+    <div class="container">
+        <h1>Iniciar sesión</h1>
+        <form action="./login.php" method="POST">
+            <div class="form-group">
+                <label for="nombre_usuario" class="label">Nombre de usuario:</label>
+                <input type="text" id="nombre_usuario" name="nombre_usuario" class="input" required>
+            </div>
+            <div class="form-group">
+                <label for="contrasenia" class="label">Contraseña:</label>
+                <input type="password" id="contrasenia" name="contrasenia" class="input" required>
+            </div>
+            <input type="submit" value="Iniciar sesión" class="button">
+            <a href="./registro.html" class="button">Registrar</a>
+        </form>
+        <a href="./index.php" class="index-link">Volver a index.php (esta puesto para mostrar que debe validarse el inicio de sesion)</a>
+        <a href="../index.html" class="index-link">Volver al listado de ejercicios</a>
+    </div>
 </body>
 </html>

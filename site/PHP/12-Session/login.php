@@ -15,13 +15,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Establecer la conexión a la base de datos
         $dsn = "mysql:host=$host;dbname=$dbname";
         $dbh = new PDO($dsn, $user, $password);
-
+        $indexVar = "./index.php";
         // Preparar y ejecutar la consulta
         $sql = "SELECT * FROM usuarios WHERE nombre_usuario = :nombre_usuario";
         $stmt = $dbh->prepare($sql);
         $stmt->bindParam(':nombre_usuario', $nombreUsuario);
         $stmt->execute();
         $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        
 
         // Verificar las credenciales y establecer la sesión
         if ($usuario && password_verify($contrasenia, $usuario["contrasenia"])) {
@@ -31,11 +33,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             exit;
         } else {
             $error = "Credenciales inválidas. Por favor, verifique su nombre de usuario y contraseña.";
+            echo $error . "     <a href=$indexVar><button>Volver a Login</button></a>";
+            
         }
+
 
         $dbh = null;
     } catch (PDOException $e) {
         $error = "Error: " . $e->getMessage();
+        echo $error;
     }
 }
 ?>
